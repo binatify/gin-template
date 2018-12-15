@@ -1,11 +1,12 @@
 module github.com/binatify/gin-template
 
 require (
-	github.com/atarantini/ginrequestid v0.0.0-20180307004245-6d9eee666701
+	github.com/atarantini/ginrequestid v0.0.0-20180307004245-6d9eee666701 // indirect
 	github.com/binatify/gin-template/base/errors v0.0.0-20181215105604-1fa54754a5f4
 	github.com/binatify/gin-template/base/model v0.0.0-20181215105604-1fa54754a5f4
+	github.com/binatify/gin-template/base/runmode v0.0.0-20181215110938-52fdcc41dbbe
 	github.com/gin-contrib/sse v0.0.0-20170109093832-22d885f9ecc7 // indirect
-	github.com/gin-gonic/contrib v0.0.0-20181101072842-54170a7b0b4b
+	github.com/gin-gonic/contrib v0.0.0-20181101072842-54170a7b0b4b // indirect
 	github.com/gin-gonic/gin v1.3.0
 	github.com/globalsign/mgo v0.0.0-20181015135952-eeefdecb41b8
 	github.com/golang/protobuf v1.2.0 // indirect
