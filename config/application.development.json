@@ -1,0 +1,22 @@
+{
+    "server": {
+        "host": "0.0.0.0:8080",
+        "request_timeout": 30,
+        "response_timeout": 30
+    },
+    "logger": {
+        "output": "stdout",
+        "level": "debug"
+    },
+    "mongo": {
+        "host": "localhost:27017",
+        "user": "",
+        "password": "",
+        "database": "gin_demo",
+        "mode": "Strong",
+        "pool": 5,
+        "timeout": 5
+    }
+}
+
+  
