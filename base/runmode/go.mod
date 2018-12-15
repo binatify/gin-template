@@ -1,4 +1,4 @@
-module github.com/binatify/gin-template/runmode
+module github.com/binatify/gin-template/base/runmode
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
