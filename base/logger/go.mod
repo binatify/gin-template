@@ -1,4 +1,4 @@
-module git.jd.com/jdcloud-epn/epns-common/logger
+module github.com/binatify/gin-template/base/logger
 
 require (
 	github.com/gin-contrib/sse v0.0.0-20170109093832-22d885f9ecc7 // indirect
