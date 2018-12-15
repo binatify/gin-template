@@ -2,9 +2,8 @@ module github.com/binatify/gin-template
 
 require (
 	github.com/atarantini/ginrequestid v0.0.0-20180307004245-6d9eee666701
-	github.com/binatify/gin-template/base/errors v0.0.0
-	github.com/binatify/gin-template/base/model v0.0.0
-	github.com/binatify/gin-template/base/runmode v0.0.0
+	github.com/binatify/gin-template/base/errors v0.0.0-20181215105604-1fa54754a5f4
+	github.com/binatify/gin-template/base/model v0.0.0-20181215105604-1fa54754a5f4
 	github.com/gin-contrib/sse v0.0.0-20170109093832-22d885f9ecc7 // indirect
 	github.com/gin-gonic/contrib v0.0.0-20181101072842-54170a7b0b4b
 	github.com/gin-gonic/gin v1.3.0
@@ -21,10 +20,4 @@ require (
 	github.com/ugorji/go/codec v0.0.0-20181209151446-772ced7fd4c2 // indirect
 	gopkg.in/go-playground/validator.v8 v8.18.2 // indirect
 	gopkg.in/yaml.v2 v2.2.2 // indirect
-)
-
-replace (
-	github.com/binatify/gin-template/base/errors => ./base/errors
-	github.com/binatify/gin-template/base/model => ./base/model
-	github.com/binatify/gin-template/base/runmode => ./base/runmode
 )
