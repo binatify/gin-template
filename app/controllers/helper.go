@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"encoding/json"
+	"net/http"
 
 	"github.com/binatify/gin-template/app/common"
 	"github.com/binatify/gin-template/base/context"
@@ -28,6 +29,16 @@ func NewCommonResponse(requestId string, result interface{}) *CommonResponse {
 		RequestId: requestId,
 		Result:    result,
 	}
+}
+
+func ResponseJSON( ctx *context.Context, result interface{}, code ...int){
+	StatusCode := http.StatusOK
+	if len(code) > 0{
+		StatusCode = code[0]
+	}
+
+
+	ctx.JSON(StatusCode, NewCommonResponse(ctx.RequestID(), result))
 }
 
 func (resp *CommonResponse) BindResultData(obj interface{}) error {

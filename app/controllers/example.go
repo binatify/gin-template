@@ -1,11 +1,9 @@
 package controllers
 
 import (
-	"github.com/binatify/gin-template/base/errors"
-	"net/http"
-
 	"github.com/binatify/gin-template/app/models"
 	"github.com/binatify/gin-template/base/context"
+	"github.com/binatify/gin-template/base/errors"
 )
 
 var (
@@ -30,7 +28,8 @@ func (_ *_Example) Create(ctx *context.Context) {
 		return
 	}
 
-	ctx.JSON(http.StatusOK, NewCommonResponse(ctx.RequestID(), NewShowExampleOutput(example)))
+	res := NewShowExampleOutput(example)
+	ResponseJSON(ctx, res)
 }
 
 func (_ *_Example) Update(ctx *context.Context) {
@@ -57,7 +56,7 @@ func (_ *_Example) Update(ctx *context.Context) {
 		return
 	}
 
-	ctx.JSON(http.StatusOK, NewCommonResponse(ctx.RequestID(), input))
+	ResponseJSON(ctx, input)
 }
 
 func (_ *_Example) Show(ctx *context.Context) {
@@ -71,7 +70,7 @@ func (_ *_Example) Show(ctx *context.Context) {
 	}
 
 	res := NewShowExampleOutput(example)
-	ctx.JSON(http.StatusOK, NewCommonResponse(ctx.RequestID(), res))
+	ResponseJSON(ctx, res)
 }
 
 func (_ *_Example) All(ctx *context.Context) {
@@ -95,7 +94,7 @@ func (_ *_Example) All(ctx *context.Context) {
 		res = append(res, NewShowExampleOutput(v))
 	}
 
-	ctx.JSON(http.StatusOK, NewCommonResponse(ctx.RequestID(), input))
+	ResponseJSON(ctx, res)
 }
 
 func (_ *_Example) Remove(ctx *context.Context) {
@@ -114,5 +113,5 @@ func (_ *_Example) Remove(ctx *context.Context) {
 		return
 	}
 
-	ctx.JSON(http.StatusOK, NewCommonResponse(ctx.RequestID(), "Successfully delete object."))
+	ResponseJSON(ctx, "Success")
 }
