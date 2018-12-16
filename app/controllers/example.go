@@ -82,9 +82,11 @@ func (_ *_Example) All(ctx *context.Context) {
 		return
 	}
 
-	examples, err := models.Example.List(100)
+	filter := models.FilterExample{}
+
+	examples, err := models.Example.List(100, &filter)
 	if err != nil {
-		ctx.Logger().Errorf("models.Example.List(): %v", err)
+		ctx.Logger().Errorf("models.Example.List(%v, %v): %v", 100, filter, err)
 		ErrHandler(ctx, errors.InvalidParameter)
 		return
 	}

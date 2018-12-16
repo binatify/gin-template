@@ -4,6 +4,7 @@ import (
 	db "github.com/binatify/gin-template/base/model"
 	"github.com/globalsign/mgo"
 	"github.com/globalsign/mgo/bson"
+	"time"
 )
 
 type _Example struct{}
@@ -57,9 +58,30 @@ func (example *_Example) Find(id string) (r *ExampleModel, err error) {
 	return
 }
 
-func (example *_Example) List(total int) (r []*ExampleModel, err error) {
+func (example *_Example) BatchInsert(examples []*ExampleModel)(err error){
+	t := time.Now()
+
+	res := make([]interface{}, len(examples))
+	for i, v := range examples{
+		v.CreatedAt = t
+		res[i] = v
+	}
+
+	return db.BatchInsert(example, res...)
+}
+
+type FilterExample struct{
+
+}
+
+func (filter *FilterExample) Resolve() bson.M{
 	query := bson.M{}
-	err = db.Where(example, query, total, &r)
+	return query
+}
+
+func (example *_Example) List(total int, filter *FilterExample) (r []*ExampleModel, err error) {
+	query := filter.Resolve()
+	err = db.Where(example, query, EnsureWithinMaxItems(total), &r)
 	return
 }
 

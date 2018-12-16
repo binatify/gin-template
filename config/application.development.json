@@ -12,7 +12,7 @@
         "host": "localhost:27017",
         "user": "",
         "password": "",
-        "database": "gin_template",
+        "database": "gin_template_dev",
         "mode": "Strong",
         "pool": 5,
         "timeout": 5
