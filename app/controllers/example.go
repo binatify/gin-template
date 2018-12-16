@@ -73,7 +73,6 @@ func (_ *_Example) Show(ctx *gin.Context) {
 }
 
 func (_ *_Example) All(ctx *context.Context) {
-	ctx.Logger().Infof(">>>>> this is the test for logger.")
 	var input ListExamplesInput // DO NOT use pointer
 	if err := ctx.ShouldBindQuery(&input); err != nil {
 		APP.appLogger.Errorf("ctx.BindQuery(%v): %v", input, err)

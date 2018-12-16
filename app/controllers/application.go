@@ -93,6 +93,9 @@ func (app *Application) Use(route string, middlewares ...gin.HandlerFunc) {
 	case "*":
 		app.Engine.Use(middlewares...)
 
+	case "v1":
+		app.v1.Use(middlewares...)
+
 	case "admin":
 		app.admin.Use(middlewares...)
 

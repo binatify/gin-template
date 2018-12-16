@@ -23,6 +23,8 @@ func New(runMode runmode.RunMode, srcPath string) *Application {
 func (app *Application) Middlewares() {
 	app.Use("*",context.NewLoggerMiddleware(app.Logger()), gin.Recovery())
 
+	app.Use("v1",context.NewLoggerMiddleware(app.Logger()))
+
 	app.Use("admin", middlewares.Auth.AuthRequired)
 }
 
