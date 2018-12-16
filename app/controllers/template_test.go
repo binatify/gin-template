@@ -51,7 +51,7 @@ type TemplateModel struct {
 var ctlStr = `package controllers
 
 import (
-	"{{.Name}}/app/models"
+	"{{.Project}}/app/models"
 	"github.com/binatify/gin-template/base/context"
 	"github.com/binatify/gin-template/base/errors"
 )
@@ -118,7 +118,7 @@ func (_ _{{.Name}}) Show(ctx *context.Context) {
 		return
 	}
 
-	res := NewShow{{.Name}}Output({{.LowerCaseName}}.
+	res := NewShow{{.Name}}Output({{.LowerCaseName}})
 	ResponseJSON(ctx, res)
 }
 
@@ -132,7 +132,7 @@ func (_ _{{.Name}}) All(ctx *context.Context) {
 
 	filter := models.Filter{{.Name}}{}
 
-	{{.LowerCaseName}}., err := models.{{.Name}}.List(100, &filter)
+	{{.LowerCaseName}}s, err := models.{{.Name}}.List(100, &filter)
 	if err != nil {
 		ctx.Logger().Errorf("models.{{.Name}}.List(%v, %v): %v", 100, filter, err)
 		ErrHandler(ctx, errors.InvalidParameter)
@@ -140,7 +140,7 @@ func (_ _{{.Name}}) All(ctx *context.Context) {
 	}
 
 	res := make([]*Show{{.Name}}Output, 0)
-	for _, v := range {{.LowerCaseName}}. {
+	for _, v := range {{.LowerCaseName}}s {
 		res = append(res, NewShow{{.Name}}Output(v))
 	}
 
@@ -226,10 +226,8 @@ type {{.Name}}Model struct {
 	db.BaseModel ` + "`" + `bson:",inline"` + "`" + `
 }
 
-func New{{.Name}}Model(name string) *{{.Name}}Model {
+func New{{.Name}}Model() *{{.Name}}Model {
 	return &{{.Name}}Model{
-		Name: name,
-
 		BaseModel: db.NewBaseModel(),
 	}
 }
