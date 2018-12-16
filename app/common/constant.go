@@ -1,6 +1,6 @@
 package common
 
 const (
-	REQUEST_ID     = "mock-request-id"
+	REQUEST_ID     = "RequestId"
 	MIGRATION_TYPE = "migrationType"
 )

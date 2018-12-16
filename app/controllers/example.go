@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"github.com/binatify/gin-template/base/errors"
 	"net/http"
 
 	"github.com/binatify/gin-template/app/models"
@@ -17,7 +18,7 @@ func (_ *_Example) Create(ctx *context.Context) {
 	var input *CreateExampleInput
 	if err := ctx.BindJSON(&input); err != nil {
 		ctx.Logger().Errorf("Unmarshal json error: %v", err)
-		ctx.JSON(http.StatusBadRequest, "Please input right parameters")
+		ErrHandler(ctx, errors.InvalidParameter)
 		return
 	}
 
@@ -25,64 +26,67 @@ func (_ *_Example) Create(ctx *context.Context) {
 	example.Phone = input.Phone
 	if err := example.Save(); err != nil {
 		ctx.Logger().Errorf("exmaple.Save(): %v", err)
-		ctx.JSON(http.StatusBadRequest, "Invalid Parameter")
+		ErrHandler(ctx, errors.InternalError)
 		return
 	}
 
-	ctx.Logger().Infof("exmaple.Save(%v): success.", example.ID.Hex())
-	ctx.JSON(http.StatusOK, NewShowExampleOutput(example))
+	ctx.JSON(http.StatusOK, NewCommonResponse(ctx.RequestID(), NewShowExampleOutput(example)))
 }
 
 func (_ *_Example) Update(ctx *context.Context) {
 	id := ctx.Param("id")
+
 	example, err := models.Example.Find(id)
 	if err != nil {
 		ctx.Logger().Errorf("models.Example.Find(%v): %v", id, err)
-		ctx.JSON(http.StatusBadRequest, "Please input right id")
+		ErrHandler(ctx, errors.InvalidParameter)
 		return
 	}
 
 	var input *UpdateExampleInput
 	if err := ctx.BindJSON(&input); err != nil {
 		ctx.Logger().Errorf("Unmarshal json error: %v", err)
-		ctx.JSON(http.StatusBadRequest, "Please input right parameters")
+		ErrHandler(ctx, errors.InvalidParameter)
 		return
 	}
 
 	example.Name = input.Name
 	if err := example.Save(); err != nil {
 		ctx.Logger().Errorf("example.Save(): %v", err)
-		ctx.JSON(http.StatusInternalServerError, "Internal error")
+		ErrHandler(ctx, errors.InternalError)
 		return
 	}
 
-	ctx.JSON(http.StatusOK, input)
+	ctx.JSON(http.StatusOK, NewCommonResponse(ctx.RequestID(), input))
 }
 
 func (_ *_Example) Show(ctx *context.Context) {
 	id := ctx.Param("id")
+
 	example, err := models.Example.Find(id)
 	if err != nil {
 		ctx.Logger().Errorf("models.Example.Find(%v): %v", id, err)
-		ctx.JSON(http.StatusBadRequest, "Please input right id")
+		ErrHandler(ctx, errors.InvalidParameter)
 		return
 	}
 
-	ctx.JSON(http.StatusOK, NewShowExampleOutput(example))
+	res := NewShowExampleOutput(example)
+	ctx.JSON(http.StatusOK, NewCommonResponse(ctx.RequestID(), res))
 }
 
 func (_ *_Example) All(ctx *context.Context) {
 	var input ListExamplesInput // DO NOT use pointer
+
 	if err := ctx.ShouldBindQuery(&input); err != nil {
 		ctx.Logger().Errorf("ctx.BindQuery(%v): %v", input, err)
-		ctx.JSON(http.StatusBadRequest, "Wrong params.")
+		ErrHandler(ctx, errors.InvalidParameter)
 		return
 	}
 
 	examples, err := models.Example.List(100)
 	if err != nil {
 		ctx.Logger().Errorf("models.Example.List(): %v", err)
-		ctx.JSON(http.StatusBadRequest, "Something wrong happened when listing the examples.")
+		ErrHandler(ctx, errors.InvalidParameter)
 		return
 	}
 
@@ -91,7 +95,7 @@ func (_ *_Example) All(ctx *context.Context) {
 		res = append(res, NewShowExampleOutput(v))
 	}
 
-	ctx.JSON(http.StatusOK, res)
+	ctx.JSON(http.StatusOK, NewCommonResponse(ctx.RequestID(), input))
 }
 
 func (_ *_Example) Remove(ctx *context.Context) {
@@ -100,15 +104,15 @@ func (_ *_Example) Remove(ctx *context.Context) {
 	example, err := models.Example.Find(id)
 	if err != nil {
 		ctx.Logger().Errorf("models.Example.Find(%v): %v", id, err)
-		ctx.JSON(http.StatusBadRequest, "Please input right id")
+		ErrHandler(ctx, errors.InvalidParameter)
 		return
 	}
 
 	if err := example.Delete(); err != nil {
 		ctx.Logger().Errorf("example.Delete(): %v", err)
-		ctx.JSON(http.StatusBadRequest, "Delete example failed.")
+		ErrHandler(ctx, errors.InvalidParameter)
 		return
 	}
 
-	ctx.JSON(http.StatusOK, "Successfully delete object.")
+	ctx.JSON(http.StatusOK, NewCommonResponse(ctx.RequestID(), "Successfully delete object."))
 }
