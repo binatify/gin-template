@@ -107,7 +107,7 @@ func (app *Application) Use(route string, middlewares ...gin.HandlerFunc) {
 // Resources for routes inject
 func (app *Application) Resource() {
 	app.v1.POST("/examples", context.NewHandler(Example.Create))
-	app.v1.PUT("/examples/:id", Example.Update)
-	app.v1.GET("/examples/:id", Example.Show)
+	app.v1.PUT("/examples/:id", context.NewHandler(Example.Update))
+	app.v1.GET("/examples/:id", context.NewHandler(Example.Show))
 	app.v1.GET("/examples", context.NewHandler(Example.All))
 }
