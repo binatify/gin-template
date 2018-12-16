@@ -15,7 +15,7 @@ var (
 	exampleIndexes    = []mgo.Index{
 		{
 			Key:    []string{"name"},
-			Unique: true,
+			Unique: false,
 		},
 		{
 			Key:    []string{"phone"},
