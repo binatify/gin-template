@@ -12,10 +12,9 @@
         "host": "localhost:27017",
         "user": "",
         "password": "",
-        "database": "gin_demo",
+        "database": "gin_template",
         "mode": "Strong",
         "pool": 5,
         "timeout": 5
     }
   }
-  

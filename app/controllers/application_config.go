@@ -3,16 +3,17 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/binatify/gin-template/base/logger"
+	"github.com/binatify/gin-template/base/runmode"
 	"io/ioutil"
 	"os"
 	"path"
-
 	"github.com/binatify/gin-template/base/model"
 )
 
 type AppConfig struct {
 	Server  *ServerConfig `json:"server"`
-	Logger  *LoggerConfig `json:"logger"`
+	Logger  *logger.Config`json:"logger"`
 	Mongo   *model.Config `json:"mongo"`
 }
 
@@ -22,16 +23,7 @@ type ServerConfig struct {
 	ResponseTimeout int    `json:"response_timeout"`
 }
 
-type LoggerConfig struct {
-	Output string `json:"output"`
-	Level  string `json:"level"`
-}
-
-func (logger *LoggerConfig) IsFileOutput() bool {
-	return logger.Output != "stdout"
-}
-
-func NewAppConfig(runMode, srcPath string) error {
+func NewAppConfig(runMode runmode.RunMode, srcPath string) error {
 	configFileName := fmt.Sprintf("application.%s.json", runMode)
 
 	configFilePath := path.Join(srcPath, "config", configFileName)
