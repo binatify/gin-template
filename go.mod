@@ -11,6 +11,7 @@ require (
 	github.com/gin-gonic/contrib v0.0.0-20181101072842-54170a7b0b4b // indirect
 	github.com/gin-gonic/gin v1.3.0
 	github.com/globalsign/mgo v0.0.0-20181015135952-eeefdecb41b8
+	github.com/golib/assert v0.0.0-20170825111607-0306abba9bd3
 	github.com/gorilla/sessions v1.1.3 // indirect
 	github.com/json-iterator/go v1.1.5 // indirect
 	github.com/kidstuff/mongostore v0.0.0-20181113001930-e650cd85ee4b // indirect
