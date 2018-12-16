@@ -4,12 +4,12 @@ import (
 	"encoding/json"
 
 	"github.com/binatify/gin-template/app/common"
+	"github.com/binatify/gin-template/base/context"
 	"github.com/binatify/gin-template/base/errors"
-	"github.com/gin-gonic/gin"
 )
 
-func ErrHandler(ctx *gin.Context, err errors.Error, msg ...string) {
-	requestId := ctx.GetHeader(common.REQUEST_ID)
+func ErrHandler(ctx *context.Context, err errors.Error, msg ...string) {
+	requestId := ctx.MustGet(common.REQUEST_ID).(string)
 
 	if len(msg) > 0 {
 		err.Message = msg[0]
