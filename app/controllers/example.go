@@ -60,12 +60,7 @@ func (_ *_Example) Update(ctx *gin.Context) {
 }
 
 func (_ *_Example) Show(ctx *gin.Context) {
-	// get parameters in path
 	id := ctx.Param("id")
-
-	// get parameters in query string, eg: /hello?phone=17301620000
-	// phone := ctx.Query("phone")
-
 	example, err := models.Example.Find(id)
 	if err != nil {
 		APP.appLogger.Errorf("models.Example.Find(%v): %v", id, err)
