@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/binatify/gin-template/app/models"
+	"github.com/binatify/gin-template/base/context"
 	"github.com/gin-gonic/gin"
 )
 
@@ -13,7 +14,7 @@ var (
 
 type _Example struct{}
 
-func (_ *_Example) Create(ctx *gin.Context) {
+func (_ *_Example) Create(ctx *context.Context) {
 	var input *CreateExampleInput
 	if err := ctx.BindJSON(&input); err != nil {
 		APP.appLogger.Errorf("Unmarshal json error: %v", err)
@@ -71,7 +72,8 @@ func (_ *_Example) Show(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, NewShowExampleOutput(example))
 }
 
-func (_ *_Example) All(ctx *gin.Context) {
+func (_ *_Example) All(ctx *context.Context) {
+	ctx.Logger().Infof(">>>>> this is the test for logger.")
 	var input ListExamplesInput // DO NOT use pointer
 	if err := ctx.ShouldBindQuery(&input); err != nil {
 		APP.appLogger.Errorf("ctx.BindQuery(%v): %v", input, err)

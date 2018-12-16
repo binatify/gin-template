@@ -46,8 +46,13 @@ func NewHandler(fn func(*Context)) gin.HandlerFunc {
 	}
 }
 
-func NewLoggerMiddleware(l *logrus.Logger, reqIDKey string) gin.HandlerFunc {
+func NewLoggerMiddleware(l *logrus.Logger) gin.HandlerFunc {
 	return func(ctx *gin.Context) {
-		ctx.Set(ContextLoggerKey, logger.NewAppLogger(l, ctx.Request.Header.Get(reqIDKey)))
+		reqid, exist := ctx.Get("RqeustId")
+
+		logrus.Infof(">>>>>>> requestid is : %v, exist is %v", reqid, exist)
+
+		// ctx.Set(ContextLoggerKey, logger.NewAppLogger(l, ctx.MustGet("RequestId").(string)))
+		ctx.Set(ContextLoggerKey, logger.NewAppLogger(l, reqid.(string)))
 	}
 }

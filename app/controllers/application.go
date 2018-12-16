@@ -1,9 +1,11 @@
 package controllers
 
 import (
-	"io"
+	"github.com/atarantini/ginrequestid"
+	"github.com/binatify/gin-template/base/context"
+	"github.com/binatify/gin-template/base/logger"
+	"github.com/binatify/gin-template/base/runmodegin"
 	"net/http"
-	"os"
 	"time"
 
 	"github.com/binatify/gin-template/app/models"
@@ -26,36 +28,33 @@ type Application struct {
 	admin     *gin.RouterGroup
 }
 
-func NewApplication(runMode, srcPath string) *Application {
+func NewApplication(runMode runmode.RunMode, srcPath string) *Application {
 	if err := NewAppConfig(runMode, srcPath); err != nil {
 		panic(err.Error())
 	}
 
+	appLogger, err := logger.NewLogger(Config.Logger)
+	if err != nil {
+		panic(err)
+	}
+
 	// set gin with logger
 	{
-		if Config.Logger.IsFileOutput() {
+		if !Config.Logger.IsStdout() {
 			gin.DisableConsoleColor()
-
-			f, err := os.Create(Config.Logger.Output)
-			if err != nil {
-				panic(err)
-			}
-
-			gin.DefaultWriter = io.MultiWriter(f)
 		}
 
-		gin.SetMode(Config.Logger.Level)
+		gin.DefaultWriter = appLogger.Out
+		gin.SetMode(runmodegin.ParseMode(runMode))
 	}
 
 	engine := gin.Default()
 
-	// set logger
-	appLogger := logrus.New()
-	appLogger.SetOutput(gin.DefaultWriter)
+	// Load middleware
+	engine.Use(ginrequestid.RequestId())
 
 	// setup model
 	models.SetupModelWithConfig(Config.Mongo, appLogger)
-
 
 	APP = &Application{
 		Engine:    engine,
@@ -104,8 +103,8 @@ func (app *Application) Use(route string, middlewares ...gin.HandlerFunc) {
 
 // Resources for routes inject
 func (app *Application) Resource() {
-	app.v1.POST("/examples", Example.Create)
+	app.v1.POST("/examples", context.NewHandler(Example.Create))
 	app.v1.PUT("/examples/:id", Example.Update)
 	app.v1.GET("/examples/:id", Example.Show)
-	app.v1.GET("/examples", Example.All)
+	app.v1.GET("/examples", context.NewHandler(Example.All))
 }

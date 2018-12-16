@@ -23,7 +23,8 @@ func init() {
 func main() {
 	flag.Parse()
 
-	if mode := runmode.RunMode(runMode); !mode.IsValid() {
+	mode := runmode.RunMode(runMode)
+	if !mode.IsValid() {
 		flag.PrintDefaults()
 		return
 	}
@@ -39,5 +40,5 @@ func main() {
 		srcPath = path.Clean(srcPath)
 	}
 
-	app.New(runMode, srcPath).Run()
+	app.New(mode, srcPath).Run()
 }
