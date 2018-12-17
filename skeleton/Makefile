@@ -9,7 +9,7 @@ coverprofile:
 	GOPROXY=off go test ./... -coverprofile=c.out && GOPROXY=off go tool cover -html=c.out
 
 linux:
-	GOPROXY=off GOOS=linux GOARCH=amd64 go build -o bin/gin_template main.go
+	GOPROXY=off GOOS=linux GOARCH=amd64 go build -o bin/{{.Name}} main.go
 
 mac:
-	GOPROXY=off go build -o bin/gin_template main.go
+	GOPROXY=off go build -o bin/{{.Name}} main.go
