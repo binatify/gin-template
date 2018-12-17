@@ -2,30 +2,44 @@ package main
 
 import (
 	"flag"
-	"html/template"
 	"io/ioutil"
 	"os"
 	"os/exec"
 	"path/filepath"
+	"regexp"
+	"strings"
 )
 
-type AppInfo struct {
-	Name     string
-	Module   string
-	Template string
-}
+var (
+	rootPath, appName, moduleName string
 
-var appInfo AppInfo
+	nameRe   = regexp.MustCompile("gin_template")
+	moduleRe = regexp.MustCompile("github.com/binatify/gin-template/example")
+)
 
 func init() {
-	flag.StringVar(&appInfo.Name, "name", "gin-template-example", "gin-template -name=gin-template-example")
-	flag.StringVar(&appInfo.Module, "module", "github.com/binatify/gin-template/example", "gin-template -module=github.com/binatify/gin-template/example")
+	flag.StringVar(&moduleName, "module", "", "gin-template -module=github.com/binatify/gin-template/example new gin-template")
 }
 
 func main() {
-	flag.Parse()
+	rootPath, _ = os.Getwd()
+	parseArgs()
 	copyTemplate()
 	renderingTemplate()
+}
+
+func parseArgs() {
+	flag.Parse()
+
+	args := flag.Args()
+	if len(args) != 2 || args[0] != "new" || args[1] == "" {
+		panic("invalid args")
+	}
+
+	appName = args[1]
+	if moduleName == "" {
+		moduleName = appName
+	}
 }
 
 func copyTemplate() {
@@ -36,7 +50,7 @@ func copyTemplate() {
 		panic(err)
 	}
 
-	copyCmd := exec.Command("cp", "-rf", tempFolder+"/skeleton", appInfo.Name)
+	copyCmd := exec.Command("cp", "-rf", tempFolder+"/example", appName)
 	if err := copyCmd.Run(); err != nil {
 		panic(err)
 	}
@@ -48,8 +62,7 @@ func copyTemplate() {
 }
 
 func renderingTemplate() {
-	root, _ := os.Getwd()
-	err := filepath.Walk(root+"/"+appInfo.Name, func(path string, info os.FileInfo, err error) error {
+	err := filepath.Walk(rootPath+"/"+appName, func(path string, info os.FileInfo, err error) error {
 		if !info.IsDir() {
 			return renderFile(path)
 		}
@@ -67,13 +80,17 @@ func renderFile(path string) error {
 		return err
 	}
 
-	t := template.Must(template.New(path).Parse(string(fileContent)))
+	var replacedContent []byte
 
-	file, err := os.OpenFile(path, os.O_CREATE|os.O_WRONLY, 0666)
-	if err != nil {
-		return err
+	if isUpdateNameFile(path) {
+		replacedContent = nameRe.ReplaceAll(fileContent, []byte(appName))
+	} else {
+		replacedContent = moduleRe.ReplaceAll(fileContent, []byte(moduleName))
 	}
 
-	defer file.Close()
-	return t.Execute(file, &appInfo)
+	return ioutil.WriteFile(path, replacedContent, 0666)
+}
+
+func isUpdateNameFile(path string) bool {
+	return strings.Contains(path, "config/application") || strings.Contains(path, "Makefile")
 }
