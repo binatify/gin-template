@@ -2,12 +2,15 @@ github.com/atarantini/ginrequestid v0.0.0-20180307004245-6d9eee666701 h1:/uIJb1a
 github.com/atarantini/ginrequestid v0.0.0-20180307004245-6d9eee666701/go.mod h1:9po3KnUR4KhqjiooM7RSjRKsFMnDQL/YCHgxVHgkhZk=
 github.com/binatify/gin-template/base/context v0.0.0-20181215113451-52ad39b64e6a h1:CB22d41DLDsL35dDGekqf5Mj4o+dnMjHwJNHkK9FCFQ=
 github.com/binatify/gin-template/base/context v0.0.0-20181215113451-52ad39b64e6a/go.mod h1:pXvYDiKha5WlN12elHDMHdcHLL7pdV4g0vYd8TK/Yfg=
+github.com/binatify/gin-template/base/errors v0.0.0-20181215105604-1fa54754a5f4 h1:rCzRvp8N5JnBqb4H3LkMj8r5+57WbQyR42Rdnmv7sKo=
+github.com/binatify/gin-template/base/errors v0.0.0-20181215105604-1fa54754a5f4/go.mod h1:PE6XDXcYUnVMoIozyGDB4uD41losE2wYME2sfkBGkLc=
 github.com/binatify/gin-template/base/logger v0.0.0-20181215113451-52ad39b64e6a h1:50bhVgjPpPCnI1U0aH0N9zL3Akzo7RsV5Don7w5kEgE=
 github.com/binatify/gin-template/base/logger v0.0.0-20181215113451-52ad39b64e6a/go.mod h1:ryvobM+tcu3kAYQEX0AEi8S3SKY/u/bhR1AP492UJJw=
 github.com/binatify/gin-template/base/model v0.0.0-20181215105604-1fa54754a5f4 h1:TqbxF6RBF7go/rAjtioNADj0QUGo4q8Qy90qyj79zjI=
 github.com/binatify/gin-template/base/model v0.0.0-20181215105604-1fa54754a5f4/go.mod h1:QhqeCFvtrKqPO04pbWHsxK1XvvJxvndkXUQne7lAEbA=
 github.com/binatify/gin-template/base/runmode v0.0.0-20181215110938-52fdcc41dbbe h1:QJr3SUbc+e/lyv6wMv6LNmeKhF6P+JttHOKTzCRgJpc=
 github.com/binatify/gin-template/base/runmode v0.0.0-20181215110938-52fdcc41dbbe/go.mod h1:WHt8sNtAUegX/2ZSlYdd2lOOqKAn00sDfaplpGDufrc=
+github.com/binatify/gin-template/base/runmodegin v0.0.0-20181217025451-36877550cd53 h1:h4JUS+F5P/W3EnTE9VqSG+4bCzo2HpmbaxcxuqvNZCo=
 github.com/binatify/gin-template/base/runmodegin v0.0.0-20181217025451-36877550cd53/go.mod h1:Q3IWq4scRln+6cfla4e0RgR6M9+q8CC/ZGl+3vu8jBs=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/gin-contrib/sse v0.0.0-20170109093832-22d885f9ecc7 h1:AzN37oI0cOS+cougNAV9szl6CVoj2RYwzS3DpUQNtlY=

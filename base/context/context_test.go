@@ -54,7 +54,7 @@ func TestNewLoggerMiddleware(t *testing.T) {
 
 	l := NewMockLogger()
 
-	handler := NewLoggerMiddleware(l, "reqIdKey")
+	handler := NewLoggerMiddleware(l)
 	assertion.NotNil(handler)
 	assertion.Equal(fmt.Sprintf("%T", handler), "gin.HandlerFunc")
 

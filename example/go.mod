@@ -3,10 +3,11 @@ module github.com/binatify/gin-template/example
 require (
 	github.com/atarantini/ginrequestid v0.0.0-20180307004245-6d9eee666701
 	github.com/binatify/gin-template/base/context v0.0.0-20181215113451-52ad39b64e6a
+	github.com/binatify/gin-template/base/errors v0.0.0-20181215105604-1fa54754a5f4
 	github.com/binatify/gin-template/base/logger v0.0.0-20181215113451-52ad39b64e6a
 	github.com/binatify/gin-template/base/model v0.0.0-20181215105604-1fa54754a5f4
 	github.com/binatify/gin-template/base/runmode v0.0.0-20181215110938-52fdcc41dbbe
-	github.com/binatify/gin-template/base/runmodegin v0.0.0-20181217025451-36877550cd53 // indirect
+	github.com/binatify/gin-template/base/runmodegin v0.0.0-20181217025451-36877550cd53
 	github.com/gin-gonic/contrib v0.0.0-20181101072842-54170a7b0b4b // indirect
 	github.com/gin-gonic/gin v1.3.0
 	github.com/globalsign/mgo v0.0.0-20181015135952-eeefdecb41b8
