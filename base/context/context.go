@@ -56,6 +56,11 @@ func NewHandler(fn func(*Context)) gin.HandlerFunc {
 
 func NewLoggerMiddleware(l *logrus.Logger) gin.HandlerFunc {
 	return func(ctx *gin.Context) {
-		ctx.Set(ContextLoggerKey, logger.NewAppLogger(l, ctx.MustGet(RequestId).(string)))
+		requestId, ok:= ctx.Get(RequestId)
+		if !ok {
+			requestId = ""
+		}
+
+		ctx.Set(ContextLoggerKey, logger.NewAppLogger(l, requestId.(string)))
 	}
 }
