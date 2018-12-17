@@ -24,11 +24,11 @@ func init() {
 
 func main() {
 	flag.Parse()
-	downloadSkeleton()
-	renderingSkeleton()
+	copyTemplate()
+	renderingTemplate()
 }
 
-func downloadSkeleton() {
+func copyTemplate() {
 	tempFolder := "_gin-template"
 
 	cloneCmd := exec.Command("git", "clone", "git@github.com:binatify/gin-template.git", tempFolder)
@@ -47,7 +47,7 @@ func downloadSkeleton() {
 	}
 }
 
-func renderingSkeleton() {
+func renderingTemplate() {
 	root, _ := os.Getwd()
 	err := filepath.Walk(root+"/"+appInfo.Name, func(path string, info os.FileInfo, err error) error {
 		if !info.IsDir() {

@@ -9,25 +9,33 @@ import (
 	"strings"
 )
 
+var (
+	rootPath string
+	nameRe   = regexp.MustCompile("gin_template")
+	moduleRe = regexp.MustCompile("github.com/binatify/gin-template/example")
+)
+
 func main() {
+	rootPath, _ = os.Getwd()
+
 	copySkeleton()
 	renderingSkeleton()
 }
 
 func copySkeleton() {
-	rmCmd := exec.Command("rm", "-rf", "../../skeleton")
+	rmCmd := exec.Command("rm", "-rf", rootPath + "/skeleton")
 	if err := rmCmd.Run(); err != nil {
 		panic(err)
 	}
 
-	cloneCmd := exec.Command("cp", "-rf", "../../example", "../../skeleton")
+	cloneCmd := exec.Command("cp", "-rf", rootPath +"/example", rootPath + "/skeleton")
 	if err := cloneCmd.Run(); err != nil {
 		panic(err)
 	}
 }
 
 func renderingSkeleton() {
-	err := filepath.Walk("../../skeleton", func(path string, info os.FileInfo, err error) error {
+	err := filepath.Walk(rootPath + "/skeleton", func(path string, info os.FileInfo, err error) error {
 		if !info.IsDir() {
 			return renderFile(path)
 		}
@@ -38,11 +46,6 @@ func renderingSkeleton() {
 		panic(err)
 	}
 }
-
-var (
-	moduleRe = regexp.MustCompile("github.com/binatify/gin-template/example")
-	nameRe   = regexp.MustCompile("gin_template")
-)
 
 func renderFile(path string) error {
 	fileContent, err := ioutil.ReadFile(path)
