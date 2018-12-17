@@ -2,7 +2,6 @@ module example
 
 require (
 	github.com/atarantini/ginrequestid v0.0.0-20180307004245-6d9eee666701
-	github.com/binatify/gin-template/base/logger v0.0.0-20181215113451-52ad39b64e6a // indirect
 	github.com/gin-gonic/contrib v0.0.0-20181101072842-54170a7b0b4b // indirect
 	github.com/gin-gonic/gin v1.3.0
 	github.com/globalsign/mgo v0.0.0-20181015135952-eeefdecb41b8
