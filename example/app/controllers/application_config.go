@@ -4,17 +4,18 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/binatify/gin-template/base/logger"
+	"github.com/binatify/gin-template/base/model"
 	"github.com/binatify/gin-template/base/runmode"
 	"io/ioutil"
 	"os"
 	"path"
-	"github.com/binatify/gin-template/base/model"
 )
 
 type AppConfig struct {
-	Server  *ServerConfig `json:"server"`
-	Logger  *logger.Config`json:"logger"`
-	Mongo   *model.Config `json:"mongo"`
+	Name   string         `json:"name"`
+	Server *ServerConfig  `json:"server"`
+	Logger *logger.Config `json:"logger"`
+	Mongo  *model.Config  `json:"mongo"`
 }
 
 type ServerConfig struct {
@@ -36,10 +37,5 @@ func NewAppConfig(runMode runmode.RunMode, srcPath string) error {
 		return err
 	}
 
-	if err = json.Unmarshal(data, &Config); err != nil {
-		return err
-	}
-
-	return nil
+	return json.Unmarshal(data, &Config)
 }
-

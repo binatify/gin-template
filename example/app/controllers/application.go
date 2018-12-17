@@ -1,15 +1,14 @@
 package controllers
 
 import (
-	"github.com/atarantini/ginrequestid"
 	"github.com/binatify/gin-template/base/context"
 	"github.com/binatify/gin-template/base/logger"
 	"github.com/binatify/gin-template/base/runmodegin"
 	"net/http"
 	"time"
 
-	"github.com/binatify/gin-template/example/app/models"
 	"github.com/binatify/gin-template/base/runmode"
+	"github.com/binatify/gin-template/example/app/models"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 )
@@ -38,6 +37,8 @@ func NewApplication(runMode runmode.RunMode, srcPath string) *Application {
 		panic(err)
 	}
 
+	appLogger.Infof("Initialized %s in %s mode", Config.Name, runMode)
+
 	// set gin with logger
 	{
 		if !Config.Logger.IsStdout() {
@@ -49,9 +50,6 @@ func NewApplication(runMode runmode.RunMode, srcPath string) *Application {
 	}
 
 	engine := gin.Default()
-
-	// Load middleware
-	engine.Use(ginrequestid.RequestId())
 
 	// setup model
 	models.SetupModelWithConfig(Config.Mongo, appLogger)

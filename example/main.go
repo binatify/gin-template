@@ -5,8 +5,8 @@ import (
 	"os"
 	"path"
 
-	"github.com/binatify/gin-template/example/app"
 	"github.com/binatify/gin-template/base/runmode"
+	"github.com/binatify/gin-template/example/app"
 )
 
 var (
