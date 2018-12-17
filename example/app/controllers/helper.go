@@ -4,13 +4,12 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/binatify/gin-template/example/app/common"
 	"github.com/binatify/gin-template/base/context"
 	"github.com/binatify/gin-template/base/errors"
 )
 
 func ErrHandler(ctx *context.Context, err errors.Error, msg ...string) {
-	requestId := ctx.MustGet(common.REQUEST_ID).(string)
+	requestId := ctx.MustGet(context.RequestId).(string)
 
 	if len(msg) > 0 {
 		err.Message = msg[0]
@@ -31,12 +30,11 @@ func NewCommonResponse(requestId string, result interface{}) *CommonResponse {
 	}
 }
 
-func ResponseJSON( ctx *context.Context, result interface{}, code ...int){
+func ResponseJSON(ctx *context.Context, result interface{}, code ...int) {
 	StatusCode := http.StatusOK
-	if len(code) > 0{
+	if len(code) > 0 {
 		StatusCode = code[0]
 	}
-
 
 	ctx.JSON(StatusCode, NewCommonResponse(ctx.RequestID(), result))
 }

@@ -4,7 +4,7 @@ gin app generator
 
 ### Install
 
-Use go get `github.com/binatify/go-template/cmd/gin-template` 
+Use go get `github.com/binatify/gin-template/cmd/gin-template`
 
 ### Usage
 

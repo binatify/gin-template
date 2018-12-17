@@ -33,7 +33,7 @@ func parseArgs() {
 
 	args := flag.Args()
 	if len(args) != 2 || args[0] != "new" || args[1] == "" {
-		panic("invalid args")
+		panic("invalid args, use `gin-template new hello` or `-h` to show details.")
 	}
 
 	appName = args[1]

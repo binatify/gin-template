@@ -58,11 +58,11 @@ func (example *_Example) Find(id string) (r *ExampleModel, err error) {
 	return
 }
 
-func (example *_Example) BatchInsert(examples []*ExampleModel)(err error){
+func (example *_Example) BatchInsert(examples []*ExampleModel) (err error) {
 	t := time.Now()
 
 	res := make([]interface{}, len(examples))
-	for i, v := range examples{
+	for i, v := range examples {
 		v.CreatedAt = t
 		res[i] = v
 	}
@@ -70,11 +70,10 @@ func (example *_Example) BatchInsert(examples []*ExampleModel)(err error){
 	return db.BatchInsert(example, res...)
 }
 
-type FilterExample struct{
-
+type FilterExample struct {
 }
 
-func (filter *FilterExample) Resolve() bson.M{
+func (filter *FilterExample) Resolve() bson.M {
 	query := bson.M{}
 	return query
 }
