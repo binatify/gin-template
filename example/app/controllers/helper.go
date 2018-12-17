@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/binatify/gin-template/app/common"
+	"github.com/binatify/gin-template/example/app/common"
 	"github.com/binatify/gin-template/base/context"
 	"github.com/binatify/gin-template/base/errors"
 )

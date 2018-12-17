@@ -1,6 +1,6 @@
 package controllers
 
-import "github.com/binatify/gin-template/app/models"
+import "github.com/binatify/gin-template/example/app/models"
 
 type CreateExampleInput struct {
 	Name  string `json:"name"`

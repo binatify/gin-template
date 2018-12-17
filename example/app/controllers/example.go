@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"github.com/binatify/gin-template/app/models"
+	"github.com/binatify/gin-template/example/app/models"
 	"github.com/binatify/gin-template/base/context"
 	"github.com/binatify/gin-template/base/errors"
 )

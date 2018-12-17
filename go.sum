@@ -1,5 +1,4 @@
 github.com/atarantini/ginrequestid v0.0.0-20180307004245-6d9eee666701/go.mod h1:9po3KnUR4KhqjiooM7RSjRKsFMnDQL/YCHgxVHgkhZk=
-github.com/binatify/gin-template/base/logger v0.0.0-20181215113451-52ad39b64e6a/go.mod h1:ryvobM+tcu3kAYQEX0AEi8S3SKY/u/bhR1AP492UJJw=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/gin-contrib/sse v0.0.0-20170109093832-22d885f9ecc7/go.mod h1:VJ0WA2NBN22VlZ2dKZQPAPnyWw5XTlK1KymzLKsr59s=
 github.com/gin-gonic/contrib v0.0.0-20181101072842-54170a7b0b4b/go.mod h1:iqneQ2Df3omzIVTkIfn7c1acsVnMGiSLn4XF5Blh3Yg=

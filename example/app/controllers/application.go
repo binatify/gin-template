@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/binatify/gin-template/app/models"
+	"github.com/binatify/gin-template/example/app/models"
 	"github.com/binatify/gin-template/base/runmode"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
