@@ -1,4 +1,4 @@
-module example
+module github.com/binatify/gin-template/example
 
 require (
 	github.com/atarantini/ginrequestid v0.0.0-20180307004245-6d9eee666701
