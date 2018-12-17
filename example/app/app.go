@@ -1,7 +1,7 @@
 package app
 
 import (
-	"github.com/binatify/gin-template/app/controllers"
+	"github.com/binatify/gin-template/example/app/controllers"
 	"github.com/binatify/gin-template/example/app/middlewares"
 	"github.com/binatify/gin-template/base/context"
 	"github.com/binatify/gin-template/base/runmode"
