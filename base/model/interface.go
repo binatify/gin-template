@@ -156,3 +156,16 @@ func BatchDelete(c Collection, query bson.M) (err error) {
 
 	return
 }
+
+func CountNum(c Collection, query ...bson.M) (num int, err error) {
+	if len(query) > 0 {
+		c.Query(func(mc *mgo.Collection) {
+			num, err = mc.Find(query[0]).Count()
+		})
+	} else {
+		c.Query(func(mc *mgo.Collection) {
+			num, err = mc.Count()
+		})
+	}
+	return
+}
