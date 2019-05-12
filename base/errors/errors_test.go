@@ -21,3 +21,11 @@ func Test_Error_String(t *testing.T) {
 	assertion := assert.New(t)
 	assertion.Equal(BadRequest.String(), "BadRequest: Bad Request")
 }
+
+func Test_Error_SetMsg(t *testing.T) {
+	assertion := assert.New(t)
+	err := InvalidParameter
+	msg := "Customerd Msg"
+	err.SetMsg(msg)
+	assertion.Equal(err.Message ,msg)
+}
