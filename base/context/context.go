@@ -10,7 +10,7 @@ var (
 	ContextLoggerKey = "_contextLoggerKey"
 )
 
-const(
+const (
 	RequestId = "RequestId"
 )
 
@@ -42,7 +42,7 @@ func (ctx *Context) Logger() *logrus.Entry {
 	return ctx.logger
 }
 
-func (ctx *Context) RequestID() string{
+func (ctx *Context) RequestID() string {
 	return ctx.MustGet(RequestId).(string)
 }
 
@@ -56,11 +56,7 @@ func NewHandler(fn func(*Context)) gin.HandlerFunc {
 
 func NewLoggerMiddleware(l *logrus.Logger) gin.HandlerFunc {
 	return func(ctx *gin.Context) {
-		requestId, ok:= ctx.Get(RequestId)
-		if !ok {
-			requestId = ""
-		}
-
-		ctx.Set(ContextLoggerKey, logger.NewAppLogger(l, requestId.(string)))
+		requestId := ctx.GetString(RequestId)
+		ctx.Set(ContextLoggerKey, logger.NewAppLogger(l, requestId))
 	}
 }
