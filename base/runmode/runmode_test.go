@@ -1,7 +1,7 @@
 package runmode
 
 import (
-	"github.com/golib/assert"
+	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
