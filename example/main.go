@@ -10,13 +10,11 @@ import (
 )
 
 var (
-	runMode string
-	srcPath string
+	runMode, srcPath string
 )
 
 func init() {
 	flag.StringVar(&runMode, "runMode", "development", "app run -runMode=[development|test|production]")
-
 	flag.StringVar(&srcPath, "srcPath", "", "gin-demo -srcPath=/path/to/source")
 }
 

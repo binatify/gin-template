@@ -9,8 +9,8 @@ import (
 
 	"os"
 
-	"github.com/stretchr/testify/assert"
 	"github.com/sirupsen/logrus"
+	"github.com/stretchr/testify/assert"
 )
 
 var (
