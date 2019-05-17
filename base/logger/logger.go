@@ -4,6 +4,10 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+var (
+	ReqIDFieldName = "ReqID"
+)
+
 func NewLogger(cfg *Config) (*logrus.Logger, error) {
 	level, err := logrus.ParseLevel(cfg.Level)
 	if err != nil {
@@ -18,6 +22,7 @@ func NewLogger(cfg *Config) (*logrus.Logger, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	logger.SetOutput(out)
 
 	// set fomatter
@@ -31,6 +36,15 @@ func NewLogger(cfg *Config) (*logrus.Logger, error) {
 
 func NewAppLogger(logger *logrus.Logger, reqId string) *logrus.Entry {
 	return logger.WithFields(logrus.Fields{
-		"ReqID": reqId,
+		ReqIDFieldName: reqId,
 	})
+}
+
+func GetReqId(entry *logrus.Entry) string {
+	id, ok := entry.Data[ReqIDFieldName].(string)
+	if ok {
+		return id
+	}
+
+	return ""
 }
