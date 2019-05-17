@@ -3,7 +3,7 @@ package model
 import (
 	"github.com/globalsign/mgo"
 	"github.com/globalsign/mgo/bson"
-	"github.com/golib/assert"
+	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
