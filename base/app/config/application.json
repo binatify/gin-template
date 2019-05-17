@@ -1,0 +1,16 @@
+{
+  "name": "application",
+  "server": {
+    "host": "0.0.0.0:3000",
+    "request_timeout": 0,
+    "response_timeout": 0,
+    "request_max": 50000,
+    "throttle": 10000,
+    "request_id": "x-jdcloud-request-id",
+    "request_pin": "x-jdcloud-pin"
+  },
+  "logger": {
+    "output": "stdout",
+    "level": "debug"
+  }
+}
