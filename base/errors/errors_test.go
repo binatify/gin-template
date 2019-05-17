@@ -1,7 +1,7 @@
 package errors
 
 import (
-	"github.com/golib/assert"
+	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
@@ -27,5 +27,5 @@ func Test_Error_SetMsg(t *testing.T) {
 	err := InvalidParameter
 	msg := "Customerd Msg"
 	err.SetMsg(msg)
-	assertion.Equal(err.Message ,msg)
+	assertion.Equal(err.Message, msg)
 }
