@@ -9,7 +9,7 @@ import (
 
 	"os"
 
-	"github.com/golib/assert"
+	"github.com/stretchr/testify/assert"
 	"github.com/sirupsen/logrus"
 )
 

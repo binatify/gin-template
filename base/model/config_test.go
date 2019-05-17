@@ -5,7 +5,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/golib/assert"
+	"github.com/stretchr/testify/assert"
 )
 
 func Test_NewConfig(t *testing.T) {

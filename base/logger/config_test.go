@@ -1,8 +1,8 @@
 package logger
 
 import (
-	"github.com/golib/assert"
 	"github.com/sirupsen/logrus"
+	"github.com/stretchr/testify/assert"
 	"os"
 	"testing"
 )
