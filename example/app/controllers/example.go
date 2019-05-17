@@ -14,7 +14,7 @@ type _Example struct{}
 
 func (_ *_Example) Create(ctx *context.Context) {
 	var input *CreateExampleInput
-	if err := ctx.BindJSON(&input); err != nil {
+	if err := ctx.ShouldBindJSON(&input); err != nil {
 		ctx.Logger().Errorf("Unmarshal json error: %v", err)
 		ErrHandler(ctx, errors.InvalidParameter)
 		return

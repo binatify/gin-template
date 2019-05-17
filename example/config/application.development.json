@@ -1,7 +1,7 @@
 {
     "name": "gin_template",
     "server": {
-        "host": "0.0.0.0:8080",
+        "host": "0.0.0.0:3000",
         "request_timeout": 30,
         "response_timeout": 30
     },
