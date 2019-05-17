@@ -28,7 +28,7 @@ func TestAppConfig_GetAppName(t *testing.T) {
 	}
 
 	{
-		cfg.Name = "epnc-config"
+		cfg.Name = "gin-config"
 		assertion.Equal(cfg.GetAppName(), cfg.Name)
 	}
 }
