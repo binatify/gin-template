@@ -3,7 +3,7 @@ package runmodegin
 import (
 	"github.com/binatify/gin-template/base/runmode"
 	"github.com/gin-gonic/gin"
-	"github.com/golib/assert"
+	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
