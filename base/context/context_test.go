@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"github.com/binatify/gin-template/base/logger"
 	"github.com/gin-gonic/gin"
-	"github.com/golib/assert"
 	"github.com/sirupsen/logrus"
+	"github.com/stretchr/testify/assert"
 	"net/http"
 	"testing"
 )
