@@ -12,8 +12,8 @@ type Record interface {
 	IsNewRecord() bool
 	IsValid() bool
 	C() Collection
-	id() bson.ObjectId
 
+	id() bson.ObjectId
 	setIsNewRecord(bool)
 	setCreatedAt(time.Time)
 	setUpdatedAt(time.Time)

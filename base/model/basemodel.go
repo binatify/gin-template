@@ -22,12 +22,16 @@ func NewBaseModel() BaseModel {
 	}
 }
 
-func (m *BaseModel) id() bson.ObjectId {
-	return m.ID
-}
-
 func (m *BaseModel) IsNewRecord() bool {
 	return m.isNewRecord
+}
+
+func (m *BaseModel) IsValid() bool {
+	return true
+}
+
+func (m *BaseModel) id() bson.ObjectId {
+	return m.ID
 }
 
 func (m *BaseModel) setIsNewRecord(isNew bool) {
