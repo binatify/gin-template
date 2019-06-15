@@ -48,7 +48,7 @@ func NewModel(config *Config, logger *logrus.Logger) *Model {
 
 	// set session mode
 	switch config.Mode {
-	case "Strong":
+	case MongoRunMode:
 		session.SetMode(mgo.Strong, true)
 	case "Monotonic":
 		session.SetMode(mgo.Monotonic, true)
