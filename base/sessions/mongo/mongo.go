@@ -1,7 +1,7 @@
 package mongo
 
 import (
-	"binatify.com/common/sessions"
+	"github.com/binatify/gin-template/base/sessions"
 	"github.com/globalsign/mgo"
 	gsessions "github.com/gorilla/sessions"
 	"github.com/kidstuff/mongostore"

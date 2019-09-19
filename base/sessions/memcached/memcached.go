@@ -1,7 +1,7 @@
 package memcached
 
 import (
-	"binatify.com/common/sessions"
+	"github.com/binatify/gin-template/base/sessions"
 	"github.com/bradfitz/gomemcache/memcache"
 	"github.com/bradleypeabody/gorilla-sessions-memcache"
 	gsessions "github.com/gorilla/sessions"
