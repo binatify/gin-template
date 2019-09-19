@@ -9,7 +9,7 @@ import (
 	"strings"
 	"testing"
 
-	"binatify.com/common/sessions"
+	"github.com/binatify/gin-template/base/sessions"
 	"github.com/gin-gonic/gin"
 )
 

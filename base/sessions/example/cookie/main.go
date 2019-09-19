@@ -1,8 +1,8 @@
 package main
 
 import (
-	"binatify.com/common/sessions"
-	"binatify.com/common/sessions/cookie"
+	"github.com/binatify/gin-template/base/sessions"
+	"github.com/binatify/gin-template/base/sessions/cookie"
 	"github.com/gin-gonic/gin"
 )
 

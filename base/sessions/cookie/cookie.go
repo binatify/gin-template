@@ -1,7 +1,7 @@
 package cookie
 
 import (
-	"binatify.com/common/sessions"
+	"github.com/binatify/gin-template/base/sessions"
 	gsessions "github.com/gorilla/sessions"
 )
 

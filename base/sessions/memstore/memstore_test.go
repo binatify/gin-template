@@ -3,8 +3,8 @@ package memstore
 import (
 	"testing"
 
-	"binatify.com/common/sessions"
-	"binatify.com/common/sessions/tester"
+	"github.com/binatify/gin-template/base/sessions"
+	"github.com/binatify/gin-template/base/sessions/tester"
 )
 
 var newStore = func(_ *testing.T) sessions.Store {

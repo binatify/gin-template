@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	DefaultKey  = "binatify.com/common/sessions"
+	DefaultKey  = "github.com/binatify/gin-template/base/sessions"
 	errorFormat = "[sessions] ERROR! %s\n"
 )
 

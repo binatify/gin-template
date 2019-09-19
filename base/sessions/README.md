@@ -2,8 +2,8 @@
 
 [![Build Status](https://travis-ci.org/gin-contrib/sessions.svg)](https://travis-ci.org/gin-contrib/sessions)
 [![codecov](https://codecov.io/gh/gin-contrib/sessions/branch/master/graph/badge.svg)](https://codecov.io/gh/gin-contrib/sessions)
-[![Go Report Card](https://goreportcard.com/badge/binatify.com/common/sessions)](https://goreportcard.com/report/binatify.com/common/sessions)
-[![GoDoc](https://godoc.org/binatify.com/common/sessions?status.svg)](https://godoc.org/binatify.com/common/sessions)
+[![Go Report Card](https://goreportcard.com/badge/github.com/binatify/gin-template/base/sessions)](https://goreportcard.com/report/github.com/binatify/gin-template/base/sessions)
+[![GoDoc](https://godoc.org/github.com/binatify/gin-template/base/sessions?status.svg)](https://godoc.org/github.com/binatify/gin-template/base/sessions)
 [![Join the chat at https://gitter.im/gin-gonic/gin](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/gin-gonic/gin)
 
 Gin middleware for session management with multi-backend support (currently cookie, Redis, Memcached, MongoDB, memstore).
@@ -15,13 +15,13 @@ Gin middleware for session management with multi-backend support (currently cook
 Download and install it:
 
 ```bash
-$ go get binatify.com/common/sessions
+$ go get github.com/binatify/gin-template/base/sessions
 ```
 
 Import it in your code:
 
 ```go
-import "binatify.com/common/sessions"
+import "github.com/binatify/gin-template/base/sessions"
 ```
 
 ## Examples
@@ -33,8 +33,8 @@ import "binatify.com/common/sessions"
 package main
 
 import (
-	"binatify.com/common/sessions"
-	"binatify.com/common/sessions/cookie"
+	"github.com/binatify/gin-template/base/sessions"
+	"github.com/binatify/gin-template/base/sessions/cookie"
 	"github.com/gin-gonic/gin"
 )
 
@@ -68,8 +68,8 @@ func main() {
 package main
 
 import (
-	"binatify.com/common/sessions"
-	"binatify.com/common/sessions/redis"
+	"github.com/binatify/gin-template/base/sessions"
+	"github.com/binatify/gin-template/base/sessions/redis"
 	"github.com/gin-gonic/gin"
 )
 
@@ -104,8 +104,8 @@ package main
 
 import (
 	"github.com/bradfitz/gomemcache/memcache"
-	"binatify.com/common/sessions"
-	"binatify.com/common/sessions/memcached"
+	"github.com/binatify/gin-template/base/sessions"
+	"github.com/binatify/gin-template/base/sessions/memcached"
 	"github.com/gin-gonic/gin"
 )
 
@@ -139,8 +139,8 @@ func main() {
 package main
 
 import (
-	"binatify.com/common/sessions"
-	"binatify.com/common/sessions/memcached"
+	"github.com/binatify/gin-template/base/sessions"
+	"github.com/binatify/gin-template/base/sessions/memcached"
 	"github.com/gin-gonic/gin"
 	"github.com/memcachier/mc"
 )
@@ -176,8 +176,8 @@ func main() {
 package main
 
 import (
-	"binatify.com/common/sessions"
-	"binatify.com/common/sessions/mongo"
+	"github.com/binatify/gin-template/base/sessions"
+	"github.com/binatify/gin-template/base/sessions/mongo"
 	"github.com/gin-gonic/gin"
 	"gopkg.in/mgo.v2"
 )
@@ -218,8 +218,8 @@ func main() {
 package main
 
 import (
-	"binatify.com/common/sessions"
-	"binatify.com/common/sessions/memstore"
+	"github.com/binatify/gin-template/base/sessions"
+	"github.com/binatify/gin-template/base/sessions/memstore"
 	"github.com/gin-gonic/gin"
 )
 

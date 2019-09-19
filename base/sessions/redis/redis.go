@@ -3,7 +3,7 @@ package redis
 import (
 	"errors"
 
-	"binatify.com/common/sessions"
+	"github.com/binatify/gin-template/base/sessions"
 	"github.com/boj/redistore"
 	"github.com/gomodule/redigo/redis"
 	gsessions "github.com/gorilla/sessions"

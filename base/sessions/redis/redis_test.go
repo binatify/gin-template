@@ -3,8 +3,8 @@ package redis
 import (
 	"testing"
 
-	"binatify.com/common/sessions"
-	"binatify.com/common/sessions/tester"
+	"github.com/binatify/gin-template/base/sessions"
+	"github.com/binatify/gin-template/base/sessions/tester"
 )
 
 const redisTestServer = "localhost:6379"
