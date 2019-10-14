@@ -61,7 +61,7 @@ func NewList(data interface{}, markers ...string) *List {
 	}
 }
 
-func NewWithTotal(data interface{}, totals ...int) *List {
+func NewListWithTotal(data interface{}, totals ...int) *List {
 	total := -1
 	if len(totals) > 0 {
 		total = totals[0]
