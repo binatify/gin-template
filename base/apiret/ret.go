@@ -10,6 +10,7 @@ type Ret struct {
 type List struct {
 	Items  interface{} `json:"items"`
 	Marker string      `json:"marker,omitempty"`
+	Total  int         `json:"total,omitempty"`
 }
 
 func NewRet(r interface{}, reqID string) *Ret {
@@ -54,5 +55,20 @@ func NewList(data interface{}, markers ...string) *List {
 		marker = markers[0]
 	}
 
-	return &List{data, marker}
+	return &List{
+		Items:  data,
+		Marker: marker,
+	}
+}
+
+func NewWithTotal(data interface{}, totals ...int) *List {
+	total := -1
+	if len(totals) > 0 {
+		total = totals[0]
+	}
+
+	return &List{
+		Items: data,
+		Total: total,
+	}
 }
