@@ -41,6 +41,8 @@ func (app *Application) Use(route string, middlewares ...gin.HandlerFunc) {
 	switch route {
 	case "*":
 		app.Engine.Use(middlewares...)
+		app.v1.Use(middlewares...)
+		app.admin.Use(middlewares...)
 
 	case "v1":
 		app.v1.Use(middlewares...)
