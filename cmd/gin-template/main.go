@@ -18,7 +18,7 @@ var (
 )
 
 func init() {
-	flag.StringVar(&moduleName, "module", "", "gin-template -module=github.com/binatify/gin-template/example new gin-template")
+	flag.StringVar(&moduleName, "module", "", "gin-template -module=github.com/binatify/gin-template/example new example")
 }
 
 func main() {
