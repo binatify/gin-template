@@ -19,7 +19,8 @@ func Test_NewConfig(t *testing.T) {
 		"database": "testing_model",
 		"mode": "Strong",
 		"pool": 5,
-		"timeout": 5
+		"timeout": 5,
+		"replica": "mgset-500148149"
 	  }
 	`
 
@@ -32,6 +33,7 @@ func Test_NewConfig(t *testing.T) {
 	assertion.Equal("Strong", modelConfig.Mode)
 	assertion.Equal(5, modelConfig.Pool)
 	assertion.Equal(5, modelConfig.Timeout)
+	assertion.Equal("mongodb://localhost:27017/testing_model?replicaSet=mgset-500148149", modelConfig.DSN())
 }
 
 func Test_ConfigCopy(t *testing.T) {

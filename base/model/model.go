@@ -19,23 +19,7 @@ type Model struct {
 }
 
 func NewModel(config *Config, logger *logrus.Logger) *Model {
-	dsn := "mongodb://"
-
-	// set user & password
-	{
-		user := config.GetUser()
-		password := config.GetPasswd()
-
-		if user != "" && password != "" {
-			dsn += user + ":" + password + "@"
-		}
-
-	}
-
-	dsn += config.Host
-	if config.Database != "" {
-		dsn += "/" + config.Database
-	}
+	dsn := config.DSN()
 
 	session, err := mgo.Dial(dsn)
 	if err != nil {
